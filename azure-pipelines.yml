@@ -35,11 +35,6 @@ steps:
     minorVersion: '0'
     patchVersion: '0'
 
-- script: |
-    sudo apt update
-    sudo apt install -y mono-complete
-  displayName: 'Install Mono runtime'
- 
 - task: NuGetCommand@2
   displayName: 'Publish NuGet package'
   inputs:
