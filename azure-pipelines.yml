@@ -1,5 +1,5 @@
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 variables:
   buildConfiguration: 'Release'
@@ -34,11 +34,11 @@ steps:
     majorVersion: '1'
     minorVersion: '0'
     patchVersion: '0'
-
+ 
 - task: NuGetCommand@2
   displayName: 'Publish NuGet package'
   inputs:
-    command: 'push'
-    publishFeed: 'appdev-upskilling-fy26/vanessa.b.tomas/Tailspin.SpaceGame.Web.Models'
+    command: push
+    feedPublish: '$(System.TeamProject)/Tailspin.SpaceGame.Web.Models'
     allowPackageConflicts: true
   condition: succeeded()
