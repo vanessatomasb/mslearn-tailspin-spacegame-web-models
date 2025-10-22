@@ -35,13 +35,10 @@ steps:
     minorVersion: '0'
     patchVersion: '0'
 
-- script: dotnet nuget locals all --clear
-  displayName: 'Clear NuGet cache'
-
 - task: NuGetCommand@2
   displayName: 'Publish NuGet package'
   inputs:
     command: 'push'
-    publishVstsFeed: 'Tailspin.SpaceGame.Web.Models'
+    publishFeed: 'appdev-upskilling-fy26/vanessa.b.tomas/Tailspin.SpaceGame.Web.Models'
     allowPackageConflicts: true
   condition: succeeded()
