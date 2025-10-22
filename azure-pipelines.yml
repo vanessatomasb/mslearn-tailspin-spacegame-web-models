@@ -35,10 +35,11 @@ steps:
     minorVersion: '0'
     patchVersion: '0'
 
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   displayName: 'Publish NuGet package'
   inputs:
-    command: push
-    feedPublish: '$(System.TeamProject)/Tailspin.SpaceGame.Web.Models'
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    publishVstsFeed: 'appdev-upskilling-fy26/Tailspin.SpaceGame.Web.Models'
     allowPackageConflicts: true
   condition: succeeded()
