@@ -36,9 +36,12 @@ steps:
     patchVersion: '0'
 
 - task: NuGetCommand@2
-  displayName: 'Publish NuGet package'
+  displayName: 'Publish NuGet package to Azure Artifacts'
   inputs:
-    command: push
-    publishVstsFeed: 'appdev-upskilling-fy26/vanessa.b.tomas/MS.Tailspin.SpaceGame.Web.Models'
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    publishFeedUrl: 'https://pkgs.dev.azure.com/appdev-upskilling-fy26/vanessa.b.tomas/_packaging/MS.Tailspin.SpaceGame.Web.Models/nuget/v3/index.json'
+    nuGetFeedType: 'external'
     allowPackageConflicts: true
+    externalEndpoint: 'AzureDevOps'
   condition: succeeded()
